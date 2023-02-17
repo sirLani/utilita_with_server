@@ -11,7 +11,7 @@ const Root: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   ref
 ) => {
   const classes = twMerge(
-    'block w-full appearance-none bg-white/[.2] rounded-full  px-5 py-2 placeholder-gray-60 shadow-sm text-white focus:outline-none focus:ring-brand-500 text-xs sm:text-sm',
+    'block w-full appearance-none bg-white/[.2] rounded-full  px-5 py-2 placeholder-gray-60 shadow-md text-slate-500 focus:outline-none focus:ring-brand-500 text-xs sm:text-sm',
     className
   );
   return (

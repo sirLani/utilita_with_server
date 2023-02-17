@@ -10,7 +10,7 @@ const Root: React.ForwardRefRenderFunction<HTMLParagraphElement, TextProps> = (
   { className, children, ...props },
   ref
 ) => {
-  const classes = twMerge('font-normal text-base text-black', className);
+  const classes = twMerge('font-normal text-sm text-slate-500', className);
   return (
     <p ref={ref} className={classes} {...props}>
       {children}
