@@ -12,7 +12,7 @@
   },
   "plugins": ["react"],
   "rules": {
-    "@typescript-eslint/prefer-nullish-coalescing": "error",
+    "@typescript-eslint/prefer-nullish-coalescing": "warn",
     "semi": "off",
     "@typescript-eslint/semi": "off",
     "space-before-function-paren": "off",
@@ -20,6 +20,9 @@
     "@typescript-eslint/space-before-function-paren": "off",
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/no-unused-vars": "warn",
-    "@typescript-eslint/comma-dangle": "off"
+    "@typescript-eslint/comma-dangle": "off",
+    "@typescript-eslint/no-empty-interface": "warn",
+    "@typescript-eslint/await-thenable": "off",
+    "@typescript-eslint/indent": "off"
   }
 }
