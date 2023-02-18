@@ -12,6 +12,7 @@ const Root: React.ForwardRefRenderFunction<HTMLHeadingElement, HeadingProps> = (
   { className, children, as, ...props },
   ref
 ) => {
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
   const TagName = as || 'h1';
   const classes = twMerge('font-medium text-3xl text-black', className);
   return (
