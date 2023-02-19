@@ -37,6 +37,15 @@ describe('test the todo implementation', () => {
     });
   });
   describe('interactions', () => {
+    const actionSetup = (text: string) => {
+      setup();
+      const input = screen.getByPlaceholderText(/Enter Task/i);
+      userEvent.type(input, text);
+      const button = screen.queryByRole('button', {
+        name: /Add/i,
+      }) as HTMLButtonElement;
+      userEvent.click(button);
+    };
     const task = 'it is a task';
 
     it(' input takes value when typed', async () => {
@@ -72,6 +81,34 @@ describe('test the todo implementation', () => {
       setup();
       const item = screen.queryByText('Register a todo item');
       expect(item).toBeInTheDocument();
+    });
+
+    it('it stops displaying empty todos when input is filled and button is clicked ', async () => {
+      setup();
+      const input = screen.getByPlaceholderText(/Enter Task/i);
+      userEvent.type(input, task);
+      const item = screen.queryByText('Register a todo item');
+      const button = screen.queryByRole('button', {
+        name: /Add/i,
+      }) as HTMLButtonElement;
+      userEvent.click(button);
+      expect(item).not.toBeInTheDocument();
+    });
+
+    it('it displays task when button is clicked ', async () => {
+      actionSetup('test task');
+      const addedTask = await screen.queryByText('test task');
+      expect(addedTask).toBeInTheDocument();
+    });
+    it('it deletes task when button is clicked ', async () => {
+      actionSetup('test another task');
+      const addedTask = await screen.queryByText('test another task');
+      const buttons = screen.getAllByTestId('delete-todoItem');
+      buttons.forEach((button) => {
+        userEvent.click(button as unknown as HTMLButtonElement);
+      });
+
+      expect(addedTask).not.toBeInTheDocument();
     });
   });
 });

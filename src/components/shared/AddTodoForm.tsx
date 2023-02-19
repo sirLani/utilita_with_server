@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useAppDispatch } from '../../hooks';
+import { useAppDispatch } from '../../redux/hooks';
 import { Box, Button, Input } from '../base';
 import { addTodo } from '../../redux/todoSlice';
 
@@ -8,6 +8,8 @@ const AddTodoForm = () => {
 
   const [disabled, setDisabled] = useState(true);
 
+  // this is used to track the change in the input element so as to ensure an empty form
+  // is not submitted and it changes the state of the button from disabled or vise versa
   useEffect(() => {
     if (value.length > 0) {
       setDisabled(false);
@@ -23,6 +25,8 @@ const AddTodoForm = () => {
     if (value.length > 0) {
       dispatch(addTodo(value));
       setValue('');
+    } else {
+      alert('form must be filled');
     }
   };
 
@@ -30,7 +34,7 @@ const AddTodoForm = () => {
     <Box>
       <form
         onSubmit={onSubmit}
-        className="flex justify-between items-center mt-12 mb-8 "
+        className="flex flex-col sm:flex-row justify-between items-center mt-12 mb-8 "
       >
         <Input
           placeholder="Enter Task"
@@ -42,7 +46,7 @@ const AddTodoForm = () => {
         />
         <Button
           disabled={disabled}
-          className="bg-slate-700 rounded-full px-10"
+          className="bg-slate-700 rounded-full px-10 mt-6 sm:mt-0"
           type="submit"
         >
           Add

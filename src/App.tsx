@@ -10,7 +10,7 @@ function App() {
         MY TODO LIST
       </Heading>
       <AddTodoForm />
-      <Box className="w-80 border-b-[0.1px] m-auto  border-slate-100 border-solid"></Box>
+      <Box className="w-60 sm:w-80 border-b-[0.1px] m-auto  border-slate-100 border-solid"></Box>
       <Todolist />
     </Box>
   );
