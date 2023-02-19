@@ -2,10 +2,11 @@
 import React from 'react';
 import { Box, Text } from '../base';
 import TodoItem from './TodoItem';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../redux/hooks';
 import { OrderedListOutlined } from '@ant-design/icons';
 
 const Todolist = () => {
+  // this gets all todos from the store and maps it to the TodoItem component
   const todos = useAppSelector((state) => state.todos);
 
   return (

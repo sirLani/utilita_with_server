@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
+    "@emotion/react": "^11.10.6",
+    "@mantine/core": "^5.10.4",
+    "@mantine/hooks": "^5.10.4",
     "@reduxjs/toolkit": "^1.9.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
