@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch } from '../../redux/hooks';
 import { Box, Button, Input } from '../base';
-import { addTodo } from '../../redux/todoSlice';
+import { addTodoAsync } from '../../redux/todoSlice';
 
 const AddTodoForm = () => {
   const [value, setValue] = useState('');
@@ -23,7 +23,7 @@ const AddTodoForm = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (value.length > 0) {
-      dispatch(addTodo(value));
+      dispatch(addTodoAsync(value)).catch((e) => {});
       setValue('');
     } else {
       alert('form must be filled');

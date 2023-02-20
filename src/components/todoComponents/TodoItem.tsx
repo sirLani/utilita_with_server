@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import { Box, Text } from '../base';
 import { type TodoListType } from '../../types/general';
 import { useAppDispatch } from '../../redux/hooks';
-import { isCompleted, deleteTodo } from '../../redux/todoSlice';
+import { isTodoCompleteAsync, deleteTodoAsync } from '../../redux/todoSlice';
 
 import EditTodoForm from './editTodoForm';
 
@@ -17,13 +17,14 @@ const TodoItem = ({ id, title, completed }: TodoListType) => {
 
   const dispatch = useAppDispatch();
 
-  //
   const handleIsCompleted = () => {
-    dispatch(isCompleted({ id, completed: !(completed ?? false) }));
+    dispatch(
+      isTodoCompleteAsync({ id, completed: !(completed ?? false) })
+    ).catch((e) => {});
   };
 
   const handleDelete = () => {
-    dispatch(deleteTodo({ id }));
+    dispatch(deleteTodoAsync({ id })).catch((e) => {});
   };
 
   const handleEdit = () => {

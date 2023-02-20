@@ -1,13 +1,20 @@
 /* eslint-disable multiline-ternary */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Text } from '../base';
 import TodoItem from './TodoItem';
-import { useAppSelector } from '../../redux/hooks';
+import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { OrderedListOutlined } from '@ant-design/icons';
+import { fetchTodosAsync } from '../../redux/todoSlice';
 
 const Todolist = () => {
   // this gets all todos from the store and maps it to the TodoItem component
   const todos = useAppSelector((state) => state.todos);
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    dispatch(fetchTodosAsync()).catch((e) => {
+      console.log(e.message);
+    });
+  }, [dispatch]);
 
   return (
     <Box>

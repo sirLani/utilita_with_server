@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Button, Input, Text } from '../base';
 import { Modal } from '@mantine/core';
 import { useAppDispatch } from '../../redux/hooks';
-import { editTodo } from '../../redux/todoSlice';
+import { editTodoAsync } from '../../redux/todoSlice';
 
 interface EditTodoProp {
   opened: boolean;
@@ -16,7 +16,7 @@ const EditTodoForm = ({ opened, setOpened, title, id }: EditTodoProp) => {
   const [value, setValue] = useState(title);
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(editTodo({ id, title: value }));
+    dispatch(editTodoAsync({ id, title: value })).catch((e) => {});
   };
 
   return (
@@ -38,7 +38,7 @@ const EditTodoForm = ({ opened, setOpened, title, id }: EditTodoProp) => {
           className="flex flex-col items-center mt-12 mb-8 "
         >
           <Input
-            placeholder="Enter Task"
+            placeholder="Edit your Task"
             value={value}
             onChange={(e) => {
               setValue(e.target.value);
