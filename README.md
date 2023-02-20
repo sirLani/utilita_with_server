@@ -6,9 +6,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm install -g json-server`
+
+Just incase you dont have the json server installed on your machine, kindly run the above command line to install it globally
+
 ### `json-server --watch db.json --port 8000`
 
-Runs the server allows it to function
+Runs the server which allows it to function
 
 ### `yarn start`
 
