@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Box, Button, Input, Text } from '../base';
 import { Modal } from '@mantine/core';
+
+import { Box, Button, Input, Text } from '../utils';
 import { useAppDispatch } from '../../redux/hooks';
 import { editTodoAsync } from '../../redux/todoSlice';
 
@@ -14,6 +15,7 @@ interface EditTodoProp {
 const EditTodoForm = ({ opened, setOpened, title, id }: EditTodoProp) => {
   const dispatch = useAppDispatch();
   const [value, setValue] = useState(title);
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(editTodoAsync({ id, title: value })).catch((e) => {});

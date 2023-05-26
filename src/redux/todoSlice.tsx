@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { TodoListType } from '../types/general';
 import uuid from 'react-uuid';
+
+import type { TodoListType } from '../types/general';
 
 const END_POINT = 'http://localhost:8000/todos';
 
