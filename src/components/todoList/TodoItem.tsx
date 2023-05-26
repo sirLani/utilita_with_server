@@ -5,16 +5,15 @@ import {
   UndoOutlined,
 } from '@ant-design/icons';
 import React, { useState } from 'react';
-import { Box, Text } from '../base';
+
+import { Box, Text } from '../utils';
 import { type TodoListType } from '../../types/general';
 import { useAppDispatch } from '../../redux/hooks';
 import { isTodoCompleteAsync, deleteTodoAsync } from '../../redux/todoSlice';
-
 import EditTodoForm from './editTodoForm';
 
 const TodoItem = ({ id, title, completed }: TodoListType) => {
   const [opened, setOpened] = useState(false);
-
   const dispatch = useAppDispatch();
 
   const handleIsCompleted = () => {
@@ -40,22 +39,29 @@ const TodoItem = ({ id, title, completed }: TodoListType) => {
       >
         <Text className="capitalize">{title}</Text>
         <Box>
-          <EditOutlined onClick={handleEdit} className="cursor-pointer" />
+          <EditOutlined
+            onClick={handleEdit}
+            className="cursor-pointer"
+            rev={''}
+          />
           {
             // eslint-disable-next-line multiline-ternary
             completed === false ? (
               <CheckCircleOutlined
+                rev={''}
                 className="ml-7 cursor-pointer"
                 onClick={handleIsCompleted}
               />
             ) : (
               <UndoOutlined
+                rev={''}
                 className="ml-7 cursor-pointer"
                 onClick={handleIsCompleted}
               />
             )
           }
           <DeleteOutlined
+            rev={''}
             data-testid="delete-todoItem"
             className="ml-7 cursor-pointer"
             onClick={handleDelete}

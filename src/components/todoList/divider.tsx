@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '../base';
+import { Box } from '../utils';
 
 const Divider = () => {
   return (
